@@ -33,7 +33,7 @@ var lossCount = 0;
 // ========================
 
 // function to get random number
-function getRandom(min, max) {
+function randomRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
@@ -43,13 +43,13 @@ function startGame() {
     currentScore = 0;
 
     // set a new target score (between 19 and 120)
-    targetScore = getRandom(19, 120);
+    targetScore = randomRange(19, 120);
 
     // set different scores for crystals (between 1 and 12)
-    crystal.blue.value = getRandom(1, 12);
-    crystal.green.value = getRandom(1, 12);
-    crystal.red.value = getRandom(1, 12);
-    crystal.yellow.value = getRandom(1, 12);
+    crystal.blue.value = randomRange(1, 12);
+    crystal.green.value = randomRange(1, 12);
+    crystal.red.value = randomRange(1, 12);
+    crystal.yellow.value = randomRange(1, 12);
 
     // change html to reflect these changes
     $("#yourScore").html(currentScore);
@@ -71,20 +71,20 @@ function addValues(crystal) {
     // change the html to reflect changes in currentScore
     $("#yourScore").html(currentScore);
     // call the checkIn function
-    checkWin();
+    gameResult();
     // test console
     console.log("Your Score: " + currentScore);
 
 }
 
 // function if user won or lost and reset the game
-function checkWin() {
+function gameResult() {
     // check if currentScore is larger than targetScore
     if (currentScore > targetScore) {
         // alert the result and test console
         alert("You lost!");
         console.log("You lost!");
-        // add to lossCounter
+        // add to lossCount
         lossCount++;
         //change lossCount html
         $("#lossCount").html(lossCount);
@@ -95,7 +95,7 @@ function checkWin() {
         // alert the result and test console
         alert("You won!");
         console.log("You won!");
-        // add to winCounter
+        // add to winCount
         winCount++;
         //change winCount html
         $("#winCount").html(winCount);
